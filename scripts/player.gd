@@ -3,6 +3,10 @@ extends CharacterBody3D
 var sensitivity = 0.001
 var speed = 4
 
+var can_shoot = true
+
+var snowball = preload("res://scenes/snowball_bullet.tscn")
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		self.rotation.y += -event.relative.x * sensitivity
@@ -11,6 +15,11 @@ func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		self.velocity.y = 5
+	
+	if Input.is_action_just_pressed("shoot") and can_shoot:
+		can_shoot = false
+		start_shot()
+		
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -19,3 +28,19 @@ func _physics_process(delta: float) -> void:
 	velocity.y -= 0.15
 	
 	move_and_slide()
+
+func start_shot():
+	var bullet = snowball.instantiate()
+	bullet.transform = $Camera3D/snowball_start.global_transform
+	self.get_parent().add_child(bullet)
+	
+	var drag = 0.1
+	while not Input.is_action_just_released("shoot"):
+		drag = move_toward(drag, 1, 0.01)
+		bullet.global_position = $Camera3D/snowball_start.global_position - ease(drag, 3) * ($Camera3D/snowball_start.global_position - $Camera3D/snowball_back.global_position)
+		await get_tree().process_frame
+	bullet.process_mode = Node.PROCESS_MODE_ALWAYS
+	await get_tree().physics_frame
+	bullet.apply_central_impulse(ease(drag, 3) * ($Camera3D/snowball_start.global_position - $Camera3D/snowball_back.global_position) * 15)
+	await get_tree().create_timer(.05)
+	can_shoot = true
