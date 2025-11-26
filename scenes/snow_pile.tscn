@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://g327tc7ibopn"]
+
+[ext_resource type="Script" uid="uid://c335wbooy3udd" path="res://scripts/snow_pile.gd" id="1_2x753"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pc2a1"]
+height = 6.0
+radius = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_qrnr7"]
+radius = 1.0
+
+[node name="snow_pile" type="Area3D"]
+script = ExtResource("1_2x753")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("CylinderShape3D_pc2a1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_qrnr7")
+
+[node name="reload" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+billboard = 1
+text = "RELOAD (R)"
+font_size = 37
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

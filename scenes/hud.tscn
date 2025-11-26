@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs0nixbepqrwk"]
+
+[ext_resource type="Script" uid="uid://busga1kk0p2ok" path="res://scripts/hud.gd" id="1_ahhtf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_toqtt"]
+font_size = 52
+outline_size = 15
+outline_color = Color(0, 0.48235294, 1, 1)
+
+[node name="hud" type="Node2D"]
+script = ExtResource("1_ahhtf")
+
+[node name="ammo" type="Label" parent="."]
+offset_left = 832.0
+offset_top = 512.0
+offset_right = 1152.0
+offset_bottom = 640.0
+text = "AMMO: 6"
+label_settings = SubResource("LabelSettings_toqtt")
+horizontal_alignment = 1
+vertical_alignment = 1
