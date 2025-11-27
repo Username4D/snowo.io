@@ -8,6 +8,8 @@ var ammo = 6
 var snowball = preload("res://scenes/snowball_bullet.tscn")
 @export var can_reload = false
 
+@export var team = "red"
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		self.rotation.y += -event.relative.x * sensitivity

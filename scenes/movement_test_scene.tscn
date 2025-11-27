@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cr7ymn8fo2u0v"]
+[gd_scene load_steps=11 format=3 uid="uid://cr7ymn8fo2u0v"]
 
 [ext_resource type="Texture2D" uid="uid://c5yyppg1alj2y" path="res://icon.svg" id="1_bivqf"]
 [ext_resource type="PackedScene" uid="uid://cf03ugnarbngg" path="res://scenes/player.tscn" id="2_wdo1p"]
 [ext_resource type="PackedScene" uid="uid://g327tc7ibopn" path="res://scenes/snow_pile.tscn" id="3_wdo1p"]
+[ext_resource type="PackedScene" uid="uid://die4c76f3ynb7" path="res://scenes/flag.tscn" id="4_su8me"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bivqf"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -52,3 +53,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010348141, 1.6913233, 0.212
 
 [node name="snow_pile" parent="props" groups=["player"] instance=ExtResource("3_wdo1p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.886, 0.5, -3.857)
+
+[node name="flag" parent="." instance=ExtResource("4_su8me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1383214, 0.5, 4.001888)
