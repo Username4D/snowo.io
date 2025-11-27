@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://hawb2haq6cni"]
+
+[node name="online_type_demo_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="bt_player" type="Button" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 320.0
+offset_right = 512.0
+offset_bottom = 384.0
+
+[node name="bt_server" type="Button" parent="."]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 320.0
+offset_right = 896.0
+offset_bottom = 384.0
