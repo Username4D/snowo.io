@@ -1,10 +1,13 @@
-[gd_scene format=3 uid="uid://hawb2haq6cni"]
+[gd_scene load_steps=2 format=3 uid="uid://hawb2haq6cni"]
+
+[ext_resource type="Script" uid="uid://24jtjclrtvoh" path="res://scripts/online_type_demo_menu.gd" id="1_67xeo"]
 
 [node name="online_type_demo_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_67xeo")
 
 [node name="bt_player" type="Button" parent="."]
 layout_mode = 0
@@ -12,6 +15,7 @@ offset_left = 256.0
 offset_top = 320.0
 offset_right = 512.0
 offset_bottom = 384.0
+text = "player"
 
 [node name="bt_server" type="Button" parent="."]
 layout_mode = 0
@@ -19,3 +23,7 @@ offset_left = 640.0
 offset_top = 320.0
 offset_right = 896.0
 offset_bottom = 384.0
+text = "server"
+
+[connection signal="pressed" from="bt_player" to="." method="_on_bt_player_pressed"]
+[connection signal="pressed" from="bt_server" to="." method="_on_bt_server_pressed"]

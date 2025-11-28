@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://hqly2vakjnjh"]
+[gd_scene load_steps=5 format=3 uid="uid://hqly2vakjnjh"]
 
 [ext_resource type="Script" uid="uid://bg0rn8xt856ra" path="res://scripts/snowball_bullet.gd" id="1_onowa"]
 
@@ -9,8 +9,21 @@ height = 0.2
 [sub_resource type="SphereShape3D" id="SphereShape3D_onowa"]
 radius = 0.1
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_onowa"]
+properties/0/path = NodePath(".:process_mode")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:linear_velocity")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:angular_velocity")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:position")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
 [node name="snowball_bullet" type="RigidBody3D"]
-process_mode = 4
 collision_layer = 2
 collision_mask = 2
 continuous_cd = true
@@ -26,5 +39,8 @@ shape = SubResource("SphereShape3D_onowa")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, -0.13, 0)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_onowa")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

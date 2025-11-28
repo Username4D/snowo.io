@@ -10,6 +10,8 @@ radius = 1.0
 radius = 1.0
 
 [node name="snow_pile" type="Area3D"]
+collision_layer = 9
+collision_mask = 9
 script = ExtResource("1_2x753")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

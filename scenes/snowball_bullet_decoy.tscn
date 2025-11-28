@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://thco40hxctwo"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_xm6sp"]
+radius = 0.1
+height = 0.2
+
+[node name="snowball_bullet_decoy" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_xm6sp")

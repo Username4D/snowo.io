@@ -7,6 +7,7 @@ height = 4.0
 radius = 2.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_76ss4"]
+resource_local_to_scene = true
 top_radius = 2.0
 bottom_radius = 2.0
 height = 0.05
@@ -16,6 +17,8 @@ transparency = 1
 albedo_color = Color(1, 1, 1, 0.18039216)
 
 [node name="flag" type="Area3D"]
+collision_layer = 9
+collision_mask = 9
 script = ExtResource("1_76ss4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
