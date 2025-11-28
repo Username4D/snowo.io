@@ -14,6 +14,10 @@ config/name="snowo.io"
 config/features=PackedStringArray("4.5")
 config/icon="res://icon.svg"
 
+[autoload]
+
+multiplayer_handler="*res://scripts/multiplayer_handler.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gdterm/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
