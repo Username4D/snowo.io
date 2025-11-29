@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhvkvxfcvn7nn"]
+
+[ext_resource type="PackedScene" uid="uid://btj5yyy32854x" path="res://assets/idle.fbx" id="1_iw5m0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iw5m0"]
+resource_local_to_scene = true
+transparency = 1
+
+[node name="idle" instance=ExtResource("1_iw5m0")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_iw5m0")

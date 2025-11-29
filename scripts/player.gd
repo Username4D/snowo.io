@@ -14,7 +14,6 @@ var r_bullet = preload("res://scenes/snowball_bullet.tscn")
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
-
 func _input(event: InputEvent) -> void:
 	if !is_multiplayer_authority():
 		get_multiplayer_authority()
@@ -38,7 +37,18 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("reload") and can_reload:
 		ammo = 6
 func _physics_process(delta: float) -> void:
+	
 	if !is_multiplayer_authority(): return
+	
+	if velocity.x != 0 or velocity.z != 0:
+		$idle.visible = false
+		$running.visible = true
+
+	else:
+		$idle.visible = true
+		$running.visible = false
+
+	
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = Vector3(direction.x * speed, velocity.y, direction.y * speed).rotated(Vector3(0,1,0), self.rotation.y)
 	
@@ -66,7 +76,9 @@ func start_shot():
 func _ready() -> void:
 	if !is_multiplayer_authority(): return
 	$Camera3D.current = true
-
+func _process(delta: float) -> void:
+	$running/Skeleton3D/Cube.get_surface_override_material(0).albedo_color = Color(1,0,0, int(!is_multiplayer_authority())) if team == "red" else Color(0,0,1, int(!is_multiplayer_authority()))
+	$idle/Cube.get_surface_override_material(0).albedo_color = Color(1,0,0, int(!is_multiplayer_authority())) if team == "red" else Color(0,0,1, int(!is_multiplayer_authority()))
 @rpc("any_peer") func shoot(origin, drag, nposition, impulse):
 	var bullet = r_bullet.instantiate()
 	bullet.global_position = nposition
