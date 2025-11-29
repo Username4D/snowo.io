@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfqr3o4i8r527"]
+
+[ext_resource type="PackedScene" uid="uid://55ava7f5hjvd" path="res://assets/player_models.glb" id="1_w02lv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w02lv"]
+resource_local_to_scene = true
+transparency = 1
+depth_draw_mode = 1
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_w02lv"]
+properties/0/path = NodePath("AnimationPlayer:current_animation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="AuxScene" instance=ExtResource("1_w02lv")]
+
+[node name="Node" parent="." index="0"]
+transform = Transform3D(0.003, 0, 0, 0, 0.003, 0, 0, 0, 0.003, 0, -0.8446086, 0)
+
+[node name="Skeleton3D" parent="Node" index="0"]
+bones/0/position = Vector3(2.1679423, 225.03268, 1.3340259)
+bones/0/rotation = Quaternion(-0.031417515, -0.046540186, -0.026527353, 0.99806976)
+bones/1/rotation = Quaternion(-0.08861246, -0.043329112, 0.9951042, -0.0061746202)
+bones/2/rotation = Quaternion(-0.08289136, 0.08173034, 0.009670482, 0.99315447)
+bones/3/rotation = Quaternion(0.60835516, 0.13227265, -0.044142656, 0.781319)
+bones/4/rotation = Quaternion(0.28099886, 0.26104903, -0.03957148, 0.922674)
+bones/5/rotation = Quaternion(0.026364572, 0.01271728, 0.019512998, 0.99938107)
+bones/6/rotation = Quaternion(0.01009114, 0.0027504445, 0.013594777, 0.99985296)
+bones/7/rotation = Quaternion(0.009868052, 0.0029457926, 0.0136240525, 0.99985427)
+bones/8/rotation = Quaternion(0.051841557, -0.0008938614, 0.00392678, 0.9986472)
+bones/9/rotation = Quaternion(-0.06595837, 0.011932645, -0.0014932763, 0.9977499)
+bones/10/rotation = Quaternion(0.6457266, 0.36275285, -0.4674303, 0.48265573)
+bones/11/rotation = Quaternion(0.5470488, 0.13127847, 0.11733194, 0.81837445)
+bones/12/rotation = Quaternion(2.0815596e-06, 0.0008466209, 0.012734567, 0.99991864)
+bones/13/rotation = Quaternion(0.048279066, -0.28460252, 0.026871106, 0.957052)
+bones/14/rotation = Quaternion(0.06617735, 0.004029619, 0.008732705, 0.99776155)
+bones/15/rotation = Quaternion(0.5433463, 0.04742205, -0.36154538, 0.75618184)
+bones/17/rotation = Quaternion(0.646422, -0.36322954, 0.48723978, 0.46130288)
+bones/18/rotation = Quaternion(0.47646114, -0.2163321, -0.14298542, 0.84008354)
+bones/19/rotation = Quaternion(0.00055379374, 0.0008011917, -0.05837831, 0.99829406)
+bones/20/rotation = Quaternion(-0.0066050896, 0.9277008, 0.0589566, -0.36858082)
+bones/21/rotation = Quaternion(0.010264694, 0.99624336, -0.059639364, 0.061943863)
+bones/22/rotation = Quaternion(0.24967621, -0.013254373, 0.19038473, 0.9493365)
+bones/23/rotation = Quaternion(-0.15362515, -0.030099925, -0.4268552, 0.89066714)
+bones/24/rotation = Quaternion(0.13664503, 0.0741887, 0.9832359, -0.0952442)
+bones/25/rotation = Quaternion(-0.20091994, -0.010406117, 0.0009945527, 0.97955185)
+bones/26/rotation = Quaternion(0.61421865, -0.13595325, 0.008772476, 0.7772871)
+bones/27/rotation = Quaternion(0.25652492, -0.27961212, 0.049330354, 0.92389315)
+
+[node name="mixamorigRightToeBase" parent="Node/Skeleton3D" index="0"]
+transform = Transform3D(-0.55377644, -0.8015052, -0.22565797, -0.5043643, 0.107248485, 0.856805, -0.662532, 0.5882919, -0.46364218, -69.487915, 0.2548809, 24.012983)
+
+[node name="mixamorigHead" parent="Node/Skeleton3D" index="1"]
+transform = Transform3D(0.99818754, -0.048672937, -0.035384905, 0.048750587, 0.99881005, 0.0013343096, 0.03527785, -0.0030569285, 0.9993728, -1.6477661, 444.07886, 7.4536138)
+
+[node name="mixamorigLeftHandIndex3" parent="Node/Skeleton3D" index="2"]
+transform = Transform3D(0.13477081, -0.74927056, -0.64840573, -0.49474716, -0.6178531, 0.6111322, -0.85852325, 0.23843409, -0.4539683, 107.20628, 202.79065, 31.813238)
+
+[node name="mixamorigRightHandIndex3" parent="Node/Skeleton3D" index="3"]
+transform = Transform3D(-0.07516608, 0.32691005, 0.94206136, 0.49274415, -0.809157, 0.3201056, 0.86692154, 0.4882566, -0.10026179, -100.344864, 193.7316, 20.087618)
+
+[node name="mixamorigLeftToeBase" parent="Node/Skeleton3D" index="4"]
+transform = Transform3D(-0.6661589, 0.6516908, 0.3626728, 0.5297167, 0.07112095, 0.84518766, 0.52500737, 0.75514305, -0.39258924, 83.59422, 0.27980423, 64.41602)
+
+[node name="Cube" parent="Node/Skeleton3D" index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_w02lv")
+
+[node name="AnimationPlayer" parent="." index="1"]
+playback_default_blend_time = 0.3
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." index="2"]
+replication_config = SubResource("SceneReplicationConfig_w02lv")
