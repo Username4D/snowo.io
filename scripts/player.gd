@@ -8,6 +8,9 @@ var ammo = 6
 
 var d_bullet = preload("res://scenes/snowball_bullet_decoy.tscn")
 var r_bullet = preload("res://scenes/snowball_bullet.tscn")
+
+var active = true
+
 @export var can_reload = false
 
 @export var team = "none"
@@ -15,10 +18,10 @@ var r_bullet = preload("res://scenes/snowball_bullet.tscn")
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 func _input(event: InputEvent) -> void:
+	
 	if !is_multiplayer_authority():
-		get_multiplayer_authority()
-		print(self.name)
 		return
+	if !active: return
 	if event is InputEventMouseMotion:
 		self.rotation.y += -event.relative.x * sensitivity
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x - event.relative.y * sensitivity,- 1, 1 )
@@ -39,7 +42,7 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	
 	if !is_multiplayer_authority(): return
-	
+	if !active: return
 	if velocity.x != 0 or velocity.z != 0:
 		$AuxScene/AnimationPlayer.current_animation = "Running(2)_1"
 
@@ -78,8 +81,21 @@ func _ready() -> void:
 @rpc("any_peer") func shoot(origin, drag, nposition, impulse):
 	var bullet = r_bullet.instantiate()
 	bullet.global_position = nposition
+	bullet.origin = origin
 	self.get_parent().add_child(bullet)
 	bullet.apply_central_impulse(impulse)
 	
 func _process(delta: float) -> void:
 	$AuxScene/Node/Skeleton3D/Cube.get_surface_override_material(0).albedo_color = Color(1,0,0, int(!is_multiplayer_authority())) if team == "red" else Color(0,0,1, int(!is_multiplayer_authority()))
+	$hud.visible = is_multiplayer_authority()
+func die():
+	$AuxScene.visible = false
+	if !is_multiplayer_authority(): return
+	print("death registred")
+	active = false
+	$deathscreen.pop_up()
+@rpc("any_peer") func respawn():
+	$AuxScene.visible = true
+	if !is_multiplayer_authority(): return
+	active = true
+	self.position = Vector3.ZERO

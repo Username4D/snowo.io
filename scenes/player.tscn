@@ -1,12 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://cf03ugnarbngg"]
+[gd_scene load_steps=8 format=3 uid="uid://cf03ugnarbngg"]
 
 [ext_resource type="Script" uid="uid://dbyrgpmda3g6o" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://cs0nixbepqrwk" path="res://scenes/hud.tscn" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://cfqr3o4i8r527" path="res://assets/player_models_scene.tscn" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://5eammu8x3gn6" path="res://scenes/death_screen.tscn" id="4_dqkch"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
+height = 1.7
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_g2els"]
 properties/0/path = NodePath(".:position")
@@ -31,7 +33,7 @@ shape = SubResource("CapsuleShape3D_3vyb7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5175164, 0)
 
 [node name="snowball_start" type="Marker3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7478837, 0, -1.1812935)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6501664, 0, -1.1812935)
 
 [node name="snowball_back" type="Marker3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6777977, 0, -0.5535405)
@@ -43,3 +45,6 @@ replication_config = SubResource("SceneReplicationConfig_g2els")
 
 [node name="AuxScene" parent="." instance=ExtResource("3_qhqgy")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="deathscreen" parent="." instance=ExtResource("4_dqkch")]
+visible = false
