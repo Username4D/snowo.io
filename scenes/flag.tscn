@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://die4c76f3ynb7"]
+[gd_scene load_steps=6 format=3 uid="uid://die4c76f3ynb7"]
 
 [ext_resource type="Script" uid="uid://b2454jye68opt" path="res://scripts/flag.gd" id="1_76ss4"]
 
@@ -15,6 +15,11 @@ height = 0.05
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32e5v"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.18039216)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_76ss4"]
+properties/0/path = NodePath(".:domination")
+properties/0/spawn = true
+properties/0/replication_mode = 2
 
 [node name="flag" type="Area3D"]
 collision_layer = 9
@@ -37,3 +42,6 @@ outline_modulate = Color(0, 0, 0, 0)
 text = "POINT A"
 
 [node name="transition_time" type="Timer" parent="."]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_76ss4")

@@ -10,7 +10,7 @@ var d_bullet = preload("res://scenes/snowball_bullet_decoy.tscn")
 var r_bullet = preload("res://scenes/snowball_bullet.tscn")
 @export var can_reload = false
 
-@export var team = "red"
+@export var team = "none"
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
