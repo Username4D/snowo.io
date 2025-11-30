@@ -77,6 +77,8 @@ func start_shot():
 func _ready() -> void:
 	if !is_multiplayer_authority(): return
 	$Camera3D.current = true
+	await get_tree().process_frame
+	game_server_handler_class.game_server_handler.win.connect(win)
 	
 @rpc("any_peer") func shoot(origin, drag, nposition, impulse):
 	var bullet = r_bullet.instantiate()
@@ -99,3 +101,11 @@ func die():
 	if !is_multiplayer_authority(): return
 	active = true
 	self.position = Vector3.ZERO
+
+func win(team):
+	print("win_triggered")
+	$win_screen.pop_up(team)
+	active = false
+	await game_server_handler_class.game_server_handler.restart
+	active = true
+	

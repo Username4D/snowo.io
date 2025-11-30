@@ -1,6 +1,7 @@
 extends Node2D
 
 func pop_up(team: String):
+	self.visible = true
 	match team:
 		"red":
 			$borders_blue.visible = false
@@ -13,3 +14,4 @@ func pop_up(team: String):
 			$red_win_label.visible = false
 			$blue_win_label.visible = true
 	await game_server_handler_class.game_server_handler.restart
+	self.visible = false
