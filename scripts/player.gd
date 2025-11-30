@@ -17,6 +17,8 @@ var active = true
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
+	respawn()
+	respawn.rpc( )
 func _input(event: InputEvent) -> void:
 	
 	if !is_multiplayer_authority():
@@ -100,7 +102,7 @@ func die():
 	$AuxScene.visible = true
 	if !is_multiplayer_authority(): return
 	active = true
-	self.position = Vector3.ZERO
+	self.position = self.get_parent().get_node("spawn_points_red").get_children()[randi_range(0,5)].position if team == "red" else self.get_parent().get_node("spawn_points_blue").get_children()[randi_range(0,5)].position
 
 func win(team):
 	print("win_triggered")

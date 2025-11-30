@@ -22,9 +22,9 @@ func _on_timer_timeout() -> void:
 	if !multiplayer.is_server(): return
 	match_time += 1
 	for i in self.get_parent().get_node("flags").get_children():
-		if i.domination == -1:
+		if i.domination < 0:
 			health_red -= 1
-		if i.domination == 1:
+		if i.domination > 0:
 			health_blue -= 1
 	if health_blue <= 0:
 		health_blue = 0
