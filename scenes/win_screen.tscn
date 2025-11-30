@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://6kyuwcjulawp"]
+[gd_scene load_steps=6 format=3 uid="uid://6kyuwcjulawp"]
 
 [ext_resource type="Script" uid="uid://dyslpsiny7c3k" path="res://scripts/win_screen.gd" id="1_wv5lq"]
+[ext_resource type="FontFile" uid="uid://c1sxg2jb13vam" path="res://assets/Boldonse-Regular.ttf" id="2_erk2x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erk2x"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -13,6 +14,7 @@ shadow_color = Color(0, 0, 0.5019608, 0.4862745)
 shadow_size = 154
 
 [sub_resource type="LabelSettings" id="LabelSettings_e41g7"]
+font = ExtResource("2_erk2x")
 font_size = 81
 
 [node name="win_screen" type="Node2D"]

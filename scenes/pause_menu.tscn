@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://4kakg8lw1v5d"]
+[gd_scene load_steps=7 format=3 uid="uid://4kakg8lw1v5d"]
 
 [ext_resource type="Script" uid="uid://dhkkpi6jevwft" path="res://scripts/pause_menu.gd" id="1_n87rw"]
+[ext_resource type="FontFile" uid="uid://c1sxg2jb13vam" path="res://assets/Boldonse-Regular.ttf" id="2_myx47"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uahpa"]
-font_size = 96
+font = ExtResource("2_myx47")
+font_size = 80
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6nth"]
 bg_color = Color(1, 1, 1, 0.1764706)
@@ -34,7 +36,7 @@ layout_mode = 0
 offset_top = 64.0
 offset_right = 1152.0
 offset_bottom = 256.0
-text = "Paused"
+text = "PAUSED"
 label_settings = SubResource("LabelSettings_uahpa")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -65,5 +67,19 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_u6nth")
 theme_override_styles/focus = SubResource("StyleBoxFlat_u6nth")
 text = "Exit game"
 
+[node name="copy" type="Button" parent="."]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 528.0
+offset_right = 640.0
+offset_bottom = 560.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_u6nth")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1hgg3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sqpv3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_u6nth")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u6nth")
+text = "Copy room ID"
+
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="copy" to="." method="_on_copy_pressed"]

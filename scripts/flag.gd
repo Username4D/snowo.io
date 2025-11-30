@@ -1,6 +1,7 @@
 extends Area3D
 
 @export var domination = 0 # -1: blue, 1: red
+@export var p_name = "POINT A"
 
 func _physics_process(delta: float) -> void:
 	var red_entries = 0
@@ -25,3 +26,5 @@ func _physics_process(delta: float) -> void:
 		$floor_mesh.get_surface_override_material(0).albedo_color = Color(1 + domination, 1 + domination, 1, 0.3)
 	if domination == 0:
 		$floor_mesh.get_surface_override_material(0).albedo_color = Color(1, 1, 1, 0.3)
+func _ready() -> void:
+	$Label3D.text = p_name

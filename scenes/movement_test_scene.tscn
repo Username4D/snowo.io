@@ -292,9 +292,11 @@ shape = SubResource("BoxShape3D_dg0mt")
 
 [node name="flag" parent="flags" instance=ExtResource("4_su8me")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+p_name = "POINT B"
 
 [node name="flag2" parent="flags" instance=ExtResource("4_su8me")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -11.2)
+p_name = "POINT C"
 
 [node name="flag3" parent="flags" instance=ExtResource("4_su8me")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 11.2)

@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cs0nixbepqrwk"]
+[gd_scene load_steps=8 format=3 uid="uid://cs0nixbepqrwk"]
 
 [ext_resource type="Script" uid="uid://busga1kk0p2ok" path="res://scripts/hud.gd" id="1_ahhtf"]
 [ext_resource type="Texture2D" uid="uid://m801aksgf853" path="res://assets/floor_texture.png" id="2_oo0fn"]
+[ext_resource type="FontFile" uid="uid://c1sxg2jb13vam" path="res://assets/Boldonse-Regular.ttf" id="3_5ysmq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_toqtt"]
-font_size = 52
+font = ExtResource("3_5ysmq")
+font_size = 31
 
 [sub_resource type="LabelSettings" id="LabelSettings_5ysmq"]
 font_size = 61
