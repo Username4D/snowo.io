@@ -4,7 +4,7 @@
 Snowo.io is a multiplayer arena fps shooter in which you have to claim all 3 flags and shoot all other players. It uses P2P Multiplayer.
 
 ## How to play: 
-coming soon...
+[here](https://github.com/Username4D/snowo.io/releases)
 
 ## Multiplayer:
 The multiplayer is P2P based, and is using [nodetunnel](https://www.nodetunnel.io/) to avoid users having to port-forward. Nodetunnel provides a relay server system. 
