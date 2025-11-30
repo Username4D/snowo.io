@@ -1,0 +1,112 @@
+[gd_scene load_steps=5 format=3 uid="uid://6kyuwcjulawp"]
+
+[ext_resource type="Script" uid="uid://dyslpsiny7c3k" path="res://scripts/win_screen.gd" id="1_wv5lq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erk2x"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+shadow_color = Color(0.5058824, 0, 0, 0.4862745)
+shadow_size = 154
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2l6cc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+shadow_color = Color(0, 0, 0.5019608, 0.4862745)
+shadow_size = 154
+
+[sub_resource type="LabelSettings" id="LabelSettings_e41g7"]
+font_size = 81
+
+[node name="win_screen" type="Node2D"]
+script = ExtResource("1_wv5lq")
+
+[node name="borders_red" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="l" type="Panel" parent="borders_red"]
+layout_mode = 0
+offset_left = -64.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_erk2x")
+
+[node name="r" type="Panel" parent="borders_red"]
+layout_mode = 0
+offset_left = 1152.0
+offset_right = 1216.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_erk2x")
+
+[node name="u" type="Panel" parent="borders_red"]
+layout_mode = 0
+offset_top = -64.0
+offset_right = 1152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_erk2x")
+
+[node name="d" type="Panel" parent="borders_red"]
+layout_mode = 0
+offset_top = 648.0
+offset_right = 1152.0
+offset_bottom = 712.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_erk2x")
+
+[node name="borders_blue" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="l" type="Panel" parent="borders_blue"]
+layout_mode = 0
+offset_left = -64.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2l6cc")
+
+[node name="r" type="Panel" parent="borders_blue"]
+layout_mode = 0
+offset_left = 1152.0
+offset_right = 1216.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2l6cc")
+
+[node name="u" type="Panel" parent="borders_blue"]
+layout_mode = 0
+offset_top = -64.0
+offset_right = 1152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2l6cc")
+
+[node name="d" type="Panel" parent="borders_blue"]
+layout_mode = 0
+offset_top = 648.0
+offset_right = 1152.0
+offset_bottom = 712.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2l6cc")
+
+[node name="red_win_label" type="Label" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+offset_top = 256.0
+offset_right = 1152.0
+offset_bottom = 384.0
+text = "RED WON"
+label_settings = SubResource("LabelSettings_e41g7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="blue_win_label" type="Label" parent="."]
+self_modulate = Color(0, 0, 1, 1)
+offset_top = 256.0
+offset_right = 1152.0
+offset_bottom = 384.0
+text = "BLUE WON"
+label_settings = SubResource("LabelSettings_e41g7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 448.0
+offset_top = 512.0
+offset_right = 704.0
+offset_bottom = 576.0
+text = "next match starting soon..."
+horizontal_alignment = 1
+vertical_alignment = 1

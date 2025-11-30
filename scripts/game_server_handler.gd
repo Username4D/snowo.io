@@ -7,6 +7,7 @@ extends Node
 @export var match_state = "ongoing" # ongoing, paused
 
 signal win(winner: String)
+signal restart
 
 func start_game():
 	if !multiplayer.is_server(): return
@@ -23,9 +24,23 @@ func _on_timer_timeout() -> void:
 			health_red -= 1
 		if i.domination == 1:
 			health_blue -= 1
+	if health_blue <= 0:
+		health_blue = 0
+		win.emit("red")
+		win_f()
+	elif health_red <= 0:
+		health_red = 0
+		win.emit("blue")
+		win_f()
 
 func _ready() -> void:
 	await get_tree().process_frame
 	game_server_handler_class.game_server_handler = self
 	if multiplayer.is_server():
 		start_game()
+		
+func win_f():
+	if !multiplayer.is_server(): return
+	$Timer.stop()
+	await get_tree().create_timer(20).timeout
+	start_game()

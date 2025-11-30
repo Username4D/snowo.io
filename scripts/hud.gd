@@ -5,4 +5,4 @@ func _process(delta: float) -> void:
 	if game_server_handler_class.game_server_handler:
 		$red_hp.text = str(game_server_handler_class.game_server_handler.health_red)
 		$blue_hp.text = str(game_server_handler_class.game_server_handler.health_blue)
-		$time.text = str(floori(game_server_handler_class.game_server_handler.match_time / 60) + game_server_handler_class.game_server_handler.match_time % 60)
+		$time.text = str(floori(game_server_handler_class.game_server_handler.match_time / 60)) + ":" + str(game_server_handler_class.game_server_handler.match_time % 60)
