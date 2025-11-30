@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://4kakg8lw1v5d"]
+
+[ext_resource type="Script" uid="uid://dhkkpi6jevwft" path="res://scripts/pause_menu.gd" id="1_n87rw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uahpa"]
+font_size = 96
+
+[node name="pause_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n87rw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.3764706)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 1152.0
+offset_bottom = 256.0
+text = "Paused"
+label_settings = SubResource("LabelSettings_uahpa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="close" type="Button" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 320.0
+offset_right = 896.0
+offset_bottom = 384.0
+text = "Return to game"
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 400.0
+offset_right = 896.0
+offset_bottom = 464.0
+text = "Exit game"
+
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

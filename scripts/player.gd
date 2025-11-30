@@ -10,7 +10,7 @@ var d_bullet = preload("res://scenes/snowball_bullet_decoy.tscn")
 var r_bullet = preload("res://scenes/snowball_bullet.tscn")
 
 var active = true
-
+var paused = false
 @export var can_reload = false
 
 @export var team = "none"
@@ -33,10 +33,12 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	if Input.is_action_just_pressed("esc"):
-		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_VISIBLE else DisplayServer.MOUSE_MODE_VISIBLE)
+		if paused: close_menu() 
+		else: open_menu()
 	
 	
 	if !active: return
+	if paused: return
 	if event is InputEventMouseMotion:
 		self.rotation.y += -event.relative.x * sensitivity
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x - event.relative.y * sensitivity,- 1, 1 )
@@ -63,7 +65,7 @@ func _physics_process(delta: float) -> void:
 		$AuxScene/AnimationPlayer.current_animation = "Idle(1)_2"
 
 	
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") if !paused else Vector2.ZERO
 	velocity = Vector3(direction.x * speed, velocity.y, direction.y * speed).rotated(Vector3(0,1,0), self.rotation.y)
 	
 	velocity.y -= 0.15
@@ -90,16 +92,15 @@ func start_shot():
 func _ready() -> void:
 	if !is_multiplayer_authority(): return
 	$Camera3D.current = true
+	close_menu()
 	await get_tree().process_frame
 	game_server_handler_class.game_server_handler.win.connect(win)
-	
 @rpc("any_peer") func shoot(origin, drag, nposition, impulse):
 	var bullet = r_bullet.instantiate()
 	bullet.global_position = nposition
 	bullet.origin = origin
 	self.get_parent().add_child(bullet)
 	bullet.apply_central_impulse(impulse)
-	
 func _process(delta: float) -> void:
 	$AuxScene/Node/Skeleton3D/Cube.get_surface_override_material(0).albedo_color = Color(1,0,0, int(!is_multiplayer_authority())) if team == "red" else Color(0,0,1, int(!is_multiplayer_authority()))
 	$hud.visible = is_multiplayer_authority()
@@ -115,7 +116,6 @@ func die():
 	ammo = 6
 	active = true
 	self.position = self.get_parent().get_node("spawn_points_red").get_children()[randi_range(0,11)].position
-
 func win(team):
 	$deathscreen.visible = false
 	print("win_triggered")
@@ -125,4 +125,11 @@ func win(team):
 	await game_server_handler_class.game_server_handler.restart
 	active = true
 	respawn()
-	
+func open_menu():
+	paused = true
+	$pause_menu.visible = true
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+func close_menu():
+	paused = false
+	$pause_menu.visible = false
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)

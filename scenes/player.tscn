@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cf03ugnarbngg"]
+[gd_scene load_steps=10 format=3 uid="uid://cf03ugnarbngg"]
 
 [ext_resource type="Script" uid="uid://dbyrgpmda3g6o" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://cs0nixbepqrwk" path="res://scenes/hud.tscn" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://cfqr3o4i8r527" path="res://assets/player_models_scene.tscn" id="3_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://5eammu8x3gn6" path="res://scenes/death_screen.tscn" id="4_dqkch"]
 [ext_resource type="PackedScene" uid="uid://6kyuwcjulawp" path="res://scenes/win_screen.tscn" id="5_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://4kakg8lw1v5d" path="res://scenes/pause_menu.tscn" id="6_tuyoq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
 
@@ -57,4 +58,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 visible = false
 
 [node name="win_screen" parent="." instance=ExtResource("5_qlg0r")]
+visible = false
+
+[node name="pause_menu" parent="." instance=ExtResource("6_tuyoq")]
 visible = false
