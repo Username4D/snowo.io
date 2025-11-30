@@ -11,3 +11,7 @@ The multiplayer is P2P based, and is using [nodetunnel](https://www.nodetunnel.i
 
 ## How to edit:
 The Project was made using Godot 4.5.1.stable and should be edited with that version. You may have to enable the nodetunnel extension in Project settings.
+
+## Licenses:
+Font: [OFL](https://github.com/Username4D/snowo.io/blob/main/assets/OFL.txt)
+Nodetunnel: [Nodetunnel License](https://github.com/Username4D/snowo.io/blob/main/addons/nodetunnel/license.md)
