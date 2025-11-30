@@ -68,3 +68,10 @@ text = "00:00"
 label_settings = SubResource("LabelSettings_6fi6k")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="room_id_display" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 608.0
+offset_right = 200.0
+offset_bottom = 631.0
+text = "ROOM ID:"

@@ -22,7 +22,7 @@ game_server_handler_class="*res://scripts/game_server_handler_class.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdterm/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
+enabled=PackedStringArray("res://addons/gdterm/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg", "res://addons/nodetunnel/plugin.cfg")
 
 [global_group]
 

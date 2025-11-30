@@ -11,19 +11,27 @@ script = ExtResource("1_67xeo")
 
 [node name="bt_player" type="Button" parent="."]
 layout_mode = 0
-offset_left = 256.0
-offset_top = 320.0
-offset_right = 512.0
-offset_bottom = 384.0
-text = "player"
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 320.0
+offset_bottom = 256.0
+text = "join"
 
 [node name="bt_server" type="Button" parent="."]
 layout_mode = 0
-offset_left = 640.0
+offset_left = 64.0
 offset_top = 320.0
-offset_right = 896.0
+offset_right = 320.0
 offset_bottom = 384.0
-text = "server"
+text = "host"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 208.0
+offset_right = 688.0
+offset_bottom = 240.0
+text = "Room ID"
 
 [connection signal="pressed" from="bt_player" to="." method="_on_bt_player_pressed"]
 [connection signal="pressed" from="bt_server" to="." method="_on_bt_server_pressed"]
