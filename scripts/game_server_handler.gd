@@ -11,8 +11,8 @@ signal restart
 
 func start_game():
 	if !multiplayer.is_server(): return
-	health_blue = 50
-	health_red = 50
+	health_blue = 300
+	health_red = 300
 	match_time = 0
 	for i in self.get_parent().get_node("flags").get_children():
 		i.domination = 0
