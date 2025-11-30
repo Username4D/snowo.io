@@ -3,9 +3,25 @@
 [ext_resource type="Script" uid="uid://b7v7v3n1e3luc" path="res://scripts/game_server_handler.gd" id="1_lxl1y"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_nfyfy"]
+properties/0/path = NodePath(".:health_blue")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:health_red")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:match_time")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:match_state")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [node name="game_server_handler" type="Node"]
 script = ExtResource("1_lxl1y")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_nfyfy")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

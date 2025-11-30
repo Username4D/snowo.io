@@ -14,8 +14,6 @@ func _physics_process(delta: float) -> void:
 				"blue":
 					blue_entries += 1
 	
-	print(domination)
-	
 	if red_entries > blue_entries:
 		domination = move_toward(domination, 1, delta * 0.5)
 	elif blue_entries > red_entries:
@@ -25,6 +23,5 @@ func _physics_process(delta: float) -> void:
 		$floor_mesh.get_surface_override_material(0).albedo_color = Color(1, 1 - domination, 1 - domination, 0.3)
 	if domination < 0:
 		$floor_mesh.get_surface_override_material(0).albedo_color = Color(1 + domination, 1 + domination, 1, 0.3)
-		print("blueing")
 	if domination == 0:
 		$floor_mesh.get_surface_override_material(0).albedo_color = Color(1, 1, 1, 0.3)

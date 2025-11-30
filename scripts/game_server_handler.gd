@@ -4,3 +4,28 @@ extends Node
 @export var health_red = 0
 
 @export var match_time = 0
+@export var match_state = "ongoing" # ongoing, paused
+
+signal win(winner: String)
+
+func start_game():
+	if !multiplayer.is_server(): return
+	health_blue = 300
+	health_red = 300
+	match_time = 0
+	$Timer.start()
+
+func _on_timer_timeout() -> void:
+	if !multiplayer.is_server(): return
+	match_time += 1
+	for i in self.get_parent().get_node("flags").get_children():
+		if i.domination == -1:
+			health_red -= 1
+		if i.domination == 1:
+			health_blue -= 1
+
+func _ready() -> void:
+	await get_tree().process_frame
+	game_server_handler_class.game_server_handler = self
+	if multiplayer.is_server():
+		start_game()

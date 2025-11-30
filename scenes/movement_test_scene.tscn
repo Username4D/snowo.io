@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://cr7ymn8fo2u0v"]
+[gd_scene load_steps=19 format=3 uid="uid://cr7ymn8fo2u0v"]
 
 [ext_resource type="PackedScene" uid="uid://cf03ugnarbngg" path="res://scenes/player.tscn" id="2_wdo1p"]
 [ext_resource type="PackedScene" uid="uid://g327tc7ibopn" path="res://scenes/snow_pile.tscn" id="3_wdo1p"]
 [ext_resource type="PackedScene" uid="uid://die4c76f3ynb7" path="res://scenes/flag.tscn" id="4_su8me"]
 [ext_resource type="PackedScene" uid="uid://cxv5htsnl5bfh" path="res://scenes/map.tscn" id="5_3hfdv"]
 [ext_resource type="Script" uid="uid://bwp6p6jv1oie7" path="res://scripts/multiplayer_spawner.gd" id="5_o55m5"]
+[ext_resource type="PackedScene" uid="uid://bvpbfhdhrjkpm" path="res://scenes/game_server_handler.tscn" id="6_3hfdv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bivqf"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -297,3 +298,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -11.2)
 
 [node name="flag3" parent="flags" instance=ExtResource("4_su8me")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 11.2)
+
+[node name="game_server_handler" parent="." instance=ExtResource("6_3hfdv")]

@@ -1,21 +1,70 @@
-[gd_scene load_steps=3 format=3 uid="uid://cs0nixbepqrwk"]
+[gd_scene load_steps=6 format=3 uid="uid://cs0nixbepqrwk"]
 
 [ext_resource type="Script" uid="uid://busga1kk0p2ok" path="res://scripts/hud.gd" id="1_ahhtf"]
+[ext_resource type="Texture2D" uid="uid://m801aksgf853" path="res://assets/floor_texture.png" id="2_oo0fn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_toqtt"]
 font_size = 52
-outline_size = 15
-outline_color = Color(0, 0.48235294, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ysmq"]
+font_size = 61
+
+[sub_resource type="LabelSettings" id="LabelSettings_6fi6k"]
+font_size = 31
 
 [node name="hud" type="Node2D"]
 script = ExtResource("1_ahhtf")
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(16, 16)
+texture = ExtResource("2_oo0fn")
+polygon = PackedVector2Array(0, 0, 96, 96, 1024, 96, 1120, 0)
+uv = PackedVector2Array(4.736391, 16.710758, 5.9663525, 35.625225, 103.33106, 121.10025, 122.24556, 119.87029)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2(768, 536)
+texture = ExtResource("2_oo0fn")
+polygon = PackedVector2Array(0, 0, 96, 96, 1024, 96, 1120, 0)
+uv = PackedVector2Array(4.736391, 16.710758, 5.9663525, 35.625225, 103.33106, 121.10025, 122.24556, 119.87029)
+
 [node name="ammo" type="Label" parent="."]
 offset_left = 832.0
-offset_top = 512.0
+offset_top = 520.0
 offset_right = 1152.0
-offset_bottom = 640.0
+offset_bottom = 648.0
 text = "AMMO: 6"
 label_settings = SubResource("LabelSettings_toqtt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="red_hp" type="Label" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+offset_left = 128.0
+offset_top = 16.0
+offset_right = 448.0
+offset_bottom = 112.0
+text = "300"
+label_settings = SubResource("LabelSettings_5ysmq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="blue_hp" type="Label" parent="."]
+self_modulate = Color(0, 0, 1, 1)
+offset_left = 720.0
+offset_top = 16.0
+offset_right = 1040.0
+offset_bottom = 112.0
+text = "300"
+label_settings = SubResource("LabelSettings_5ysmq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="time" type="Label" parent="."]
+offset_left = 512.0
+offset_top = 16.0
+offset_right = 640.0
+offset_bottom = 112.0
+text = "00:00"
+label_settings = SubResource("LabelSettings_6fi6k")
 horizontal_alignment = 1
 vertical_alignment = 1
