@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs0nixbepqrwk"]
+[gd_scene load_steps=7 format=3 uid="uid://cs0nixbepqrwk"]
 
 [ext_resource type="Script" uid="uid://busga1kk0p2ok" path="res://scripts/hud.gd" id="1_ahhtf"]
 [ext_resource type="Texture2D" uid="uid://m801aksgf853" path="res://assets/floor_texture.png" id="2_oo0fn"]
@@ -11,6 +11,9 @@ font_size = 61
 
 [sub_resource type="LabelSettings" id="LabelSettings_6fi6k"]
 font_size = 31
+
+[sub_resource type="QuadMesh" id="QuadMesh_oo0fn"]
+size = Vector2(1, 2.325)
 
 [node name="hud" type="Node2D"]
 script = ExtResource("1_ahhtf")
@@ -74,4 +77,15 @@ offset_left = 16.0
 offset_top = 608.0
 offset_right = 200.0
 offset_bottom = 631.0
-text = "ROOM ID:"
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(576, 324)
+rotation = 0.7853982
+scale = Vector2(2.035, 7.89)
+mesh = SubResource("QuadMesh_oo0fn")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
+position = Vector2(576, 324)
+rotation = 2.3561945
+scale = Vector2(2.035, 7.89)
+mesh = SubResource("QuadMesh_oo0fn")

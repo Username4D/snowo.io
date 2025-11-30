@@ -19,17 +19,28 @@ func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 	respawn()
 	respawn.rpc( )
+	if !is_multiplayer_authority(): return
+	await game_server_handler_class.game_server_handler.get_node("MultiplayerSynchronizer").synchronized
+	if game_server_handler_class.game_server_handler.match_state == "win_red":
+		win("red")
+	elif game_server_handler_class.game_server_handler.match_state == "win_blue":
+		win("blue")
+	else:
+		print(game_server_handler_class.game_server_handler.match_state)
 func _input(event: InputEvent) -> void:
 	
 	if !is_multiplayer_authority():
 		return
+	
+	if Input.is_action_just_pressed("esc"):
+		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_VISIBLE else DisplayServer.MOUSE_MODE_VISIBLE)
+	
+	
 	if !active: return
 	if event is InputEventMouseMotion:
 		self.rotation.y += -event.relative.x * sensitivity
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x - event.relative.y * sensitivity,- 1, 1 )
 	
-	if Input.is_action_just_pressed("esc"):
-		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_VISIBLE else DisplayServer.MOUSE_MODE_VISIBLE)
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		self.velocity.y = 5
@@ -70,8 +81,8 @@ func start_shot():
 		await get_tree().process_frame
 	await get_tree().physics_frame
 	
-	shoot.rpc(int(self.name), drag, $Camera3D/snowball_start.global_position - ease(drag, 3) * ($Camera3D/snowball_start.global_position - $Camera3D/snowball_back.global_position), ease(drag, 3) * ($Camera3D/snowball_start.global_position - $Camera3D/snowball_back.global_position) * 15)
-	shoot(int(self.name), drag, $Camera3D/snowball_start.global_position - ease(drag, 3) * ($Camera3D/snowball_start.global_position - $Camera3D/snowball_back.global_position), ease(drag, 3) * ($Camera3D/snowball_start.global_position - $Camera3D/snowball_back.global_position) * 15)
+	shoot.rpc(int(self.name), drag, $Camera3D/snowball_start.global_position - ease(drag, 3) * ($Camera3D/snowball_start.global_position - $Camera3D/snowball_back.global_position), ease(drag, 3) * ($Camera3D/snowball_start.global_position - $Camera3D/snowball_back.global_position) * 25)
+	shoot(int(self.name), drag, $Camera3D/snowball_start.global_position - ease(drag, 3) * ($Camera3D/snowball_start.global_position - $Camera3D/snowball_back.global_position), ease(drag, 3) * ($Camera3D/snowball_start.global_position - $Camera3D/snowball_back.global_position) * 25)
 	bullet.queue_free()
 	ammo -= 1
 	await get_tree().create_timer(.05)
@@ -101,13 +112,17 @@ func die():
 @rpc("any_peer") func respawn():
 	$AuxScene.visible = true
 	if !is_multiplayer_authority(): return
+	ammo = 6
 	active = true
-	self.position = self.get_parent().get_node("spawn_points_red").get_children()[randi_range(0,5)].position if team == "red" else self.get_parent().get_node("spawn_points_blue").get_children()[randi_range(0,5)].position
+	self.position = self.get_parent().get_node("spawn_points_red").get_children()[randi_range(0,11)].position
 
 func win(team):
+	$deathscreen.visible = false
 	print("win_triggered")
+	print(game_server_handler_class.game_server_handler.match_state)
 	$win_screen.pop_up(team)
 	active = false
 	await game_server_handler_class.game_server_handler.restart
 	active = true
+	respawn()
 	

@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 multiplayer_handler="*res://scripts/multiplayer_handler.gd"
 game_server_handler_class="*res://scripts/game_server_handler_class.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gdterm/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg", "res://addons/nodetunnel/plugin.cfg")

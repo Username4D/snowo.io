@@ -4,7 +4,7 @@ extends Node
 @export var health_red = 0
 
 @export var match_time = 0
-@export var match_state = "ongoing" # ongoing, paused
+@export var match_state = "ongoing" # ongoing, win_red, win_blue
 
 signal win(winner: String)
 signal restart
@@ -28,13 +28,17 @@ func _on_timer_timeout() -> void:
 			health_blue -= 1
 	if health_blue <= 0:
 		health_blue = 0
+		match_state = "win_red"
 		win_f.rpc("red")
 		win_f("red")
+		
 	elif health_red <= 0:
 		health_red = 0
+		match_state = "win_blue"
 		win_f.rpc("blue")
 		win_f("blue")
-
+		
+	print(match_state)
 func _ready() -> void:
 	await get_tree().process_frame
 	game_server_handler_class.game_server_handler = self
@@ -44,9 +48,13 @@ func _ready() -> void:
 
 @rpc("any_peer") func win_f(team):
 	win.emit(team)
-	get_tree().create_timer(20).timeout.connect(func(): restart.emit())
 	if !multiplayer.is_server(): return
+	get_tree().create_timer(20).timeout.connect(func(): restart_signal.rpc())
+	get_tree().create_timer(20).timeout.connect(restart_signal)
 	$Timer.stop()
 	await get_tree().create_timer(20).timeout
 	
 	start_game()
+
+@rpc("any_peer") func restart_signal():
+	restart.emit()

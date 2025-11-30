@@ -7,6 +7,18 @@ func _on_body_entered(body: Node) -> void:
 		self.linear_velocity = Vector3.ZERO
 		self.angular_velocity = Vector3.ZERO
 		await get_tree().physics_frame
-		self.process_mode = Node.PROCESS_MODE_DISABLED
+		
+		self.freeze = true
+		death()
 	elif origin != int(body.name):
+		self.queue_free()
 		body.die()
+
+func death():
+	$snowball_timer.start()
+	await $snowball_timer.timeout
+	$snowball_timer.start()
+	while $snowball_timer.time_left != 0:
+		await get_tree().process_frame
+		$MeshInstance3D.mesh.material.albedo_color.a = $snowball_timer.time_left / 4
+	self.queue_free()
