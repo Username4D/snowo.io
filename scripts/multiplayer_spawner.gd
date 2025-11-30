@@ -10,7 +10,7 @@ var blue_players = []
 func _ready() -> void:
 	multiplayer.peer_connected.connect(spawn_player)
 	multiplayer.peer_disconnected.connect(destroy_player)
-	
+	if multiplayer.is_server(): spawn_player(multiplayer.get_unique_id())
 func spawn_player(id: int):
 	if !multiplayer.is_server(): return
 	print("connected")
