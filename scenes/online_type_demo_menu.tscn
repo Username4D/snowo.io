@@ -1,6 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://hawb2haq6cni"]
+[gd_scene load_steps=10 format=3 uid="uid://hawb2haq6cni"]
 
 [ext_resource type="Script" uid="uid://24jtjclrtvoh" path="res://scripts/online_type_demo_menu.gd" id="1_67xeo"]
+[ext_resource type="FontFile" uid="uid://c1sxg2jb13vam" path="res://assets/Boldonse-Regular.ttf" id="2_g2pgf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6nth"]
+bg_color = Color(1, 1, 1, 0.1764706)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hgg3"]
+bg_color = Color(1, 1, 1, 0.32156864)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqpv3"]
+bg_color = Color(1, 1, 1, 0.2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2pgf"]
+bg_color = Color(1, 1, 1, 0.08235294)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qxtsa"]
+bg_color = Color(1, 1, 1, 0.12156863)
+
+[sub_resource type="QuadMesh" id="QuadMesh_qxtsa"]
+size = Vector2(0.25, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1uccf"]
+font = ExtResource("2_g2pgf")
+font_size = 30
 
 [node name="online_type_demo_menu" type="Control"]
 layout_mode = 3
@@ -11,27 +34,66 @@ script = ExtResource("1_67xeo")
 
 [node name="bt_player" type="Button" parent="."]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 192.0
-offset_right = 320.0
-offset_bottom = 256.0
-text = "join"
+offset_left = 704.0
+offset_top = 320.0
+offset_right = 1088.0
+offset_bottom = 384.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_u6nth")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1hgg3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sqpv3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_u6nth")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u6nth")
+text = "Join room"
 
 [node name="bt_server" type="Button" parent="."]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 320.0
-offset_right = 320.0
+offset_right = 448.0
 offset_bottom = 384.0
-text = "host"
+theme_override_styles/normal = SubResource("StyleBoxFlat_u6nth")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1hgg3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sqpv3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_u6nth")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u6nth")
+text = "Create room"
 
 [node name="TextEdit" type="TextEdit" parent="."]
 layout_mode = 0
-offset_left = 336.0
-offset_top = 208.0
-offset_right = 688.0
-offset_bottom = 240.0
+offset_left = 704.0
+offset_top = 400.0
+offset_right = 1088.0
+offset_bottom = 432.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_g2pgf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qxtsa")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_g2pgf")
 placeholder_text = "Room ID"
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(576, 416)
+scale = Vector2(16.000025, 448.00003)
+mesh = SubResource("QuadMesh_qxtsa")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 448.0
+offset_bottom = 256.0
+text = "HOST: "
+label_settings = SubResource("LabelSettings_1uccf")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 192.0
+offset_right = 1088.0
+offset_bottom = 256.0
+text = "JOIN: "
+label_settings = SubResource("LabelSettings_1uccf")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [connection signal="pressed" from="bt_player" to="." method="_on_bt_player_pressed"]
 [connection signal="pressed" from="bt_server" to="." method="_on_bt_server_pressed"]

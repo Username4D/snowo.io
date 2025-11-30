@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://4kakg8lw1v5d"]
+[gd_scene load_steps=6 format=3 uid="uid://4kakg8lw1v5d"]
 
 [ext_resource type="Script" uid="uid://dhkkpi6jevwft" path="res://scripts/pause_menu.gd" id="1_n87rw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uahpa"]
 font_size = 96
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6nth"]
+bg_color = Color(1, 1, 1, 0.1764706)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hgg3"]
+bg_color = Color(1, 1, 1, 0.32156864)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqpv3"]
+bg_color = Color(1, 1, 1, 0.2)
 
 [node name="pause_menu" type="Control"]
 layout_mode = 3
@@ -36,6 +45,11 @@ offset_left = 256.0
 offset_top = 320.0
 offset_right = 896.0
 offset_bottom = 384.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_u6nth")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1hgg3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sqpv3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_u6nth")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u6nth")
 text = "Return to game"
 
 [node name="exit" type="Button" parent="."]
@@ -44,6 +58,11 @@ offset_left = 256.0
 offset_top = 400.0
 offset_right = 896.0
 offset_bottom = 464.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_u6nth")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1hgg3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sqpv3")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_u6nth")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u6nth")
 text = "Exit game"
 
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]

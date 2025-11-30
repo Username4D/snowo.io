@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://cxhbipda3o2to"]
+
+[ext_resource type="PackedScene" uid="uid://cxv5htsnl5bfh" path="res://scenes/map.tscn" id="1_ekxnf"]
+[ext_resource type="PackedScene" uid="uid://hawb2haq6cni" path="res://scenes/online_type_demo_menu.tscn" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://m801aksgf853" path="res://assets/floor_texture.png" id="2_wu84c"]
+[ext_resource type="FontFile" uid="uid://c1sxg2jb13vam" path="res://assets/Boldonse-Regular.ttf" id="3_bqqt6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ekxnf"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_bqqt6"]
+sky_material = SubResource("ProceduralSkyMaterial_ekxnf")
+
+[sub_resource type="Environment" id="Environment_wu84c"]
+background_mode = 2
+sky = SubResource("Sky_bqqt6")
+tonemap_mode = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_wu84c"]
+font = ExtResource("3_bqqt6")
+font_size = 76
+
+[node name="main_menu" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wu84c")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="map" parent="." instance=ExtResource("1_ekxnf")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.77440035, -0.20818307, 0.5974646, -0.019318596, 0.93609494, 0.35121652, -0.632401, -0.2835243, 0.72089046, 4, 2.785, 4)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+self_modulate = Color(0.8784058, 0.8784058, 0.8784058, 1)
+position = Vector2(16, 72)
+texture = ExtResource("2_wu84c")
+polygon = PackedVector2Array(0, 0, 96, 96, 1024, 96, 1120, 0)
+uv = PackedVector2Array(4.736391, 16.710758, 5.9663525, 35.625225, 103.33106, 121.10025, 122.24556, 119.87029)
+
+[node name="online_type_demo_menu" parent="." instance=ExtResource("2_bqqt6")]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1152.0
+offset_bottom = 192.0
+text = "SNOWO.IO"
+label_settings = SubResource("LabelSettings_wu84c")
+horizontal_alignment = 1
+vertical_alignment = 1

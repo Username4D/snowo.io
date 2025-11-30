@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="snowo.io"
-run/main_scene="uid://hawb2haq6cni"
+run/main_scene="uid://cxhbipda3o2to"
 config/features=PackedStringArray("4.5")
 config/icon="res://icon.svg"
 

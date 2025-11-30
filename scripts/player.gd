@@ -32,7 +32,7 @@ func _input(event: InputEvent) -> void:
 	if !is_multiplayer_authority():
 		return
 	
-	if Input.is_action_just_pressed("esc"):
+	if Input.is_action_just_pressed("esc") and active:
 		if paused: close_menu() 
 		else: open_menu()
 	
@@ -117,6 +117,7 @@ func die():
 	active = true
 	self.position = self.get_parent().get_node("spawn_points_red").get_children()[randi_range(0,11)].position
 func win(team):
+	close_menu()
 	$deathscreen.visible = false
 	print("win_triggered")
 	print(game_server_handler_class.game_server_handler.match_state)
