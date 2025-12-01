@@ -1,4 +1,5 @@
-<img width="1147" height="184" alt="logo" src="https://github.com/user-attachments/assets/c5c4d894-80af-41b2-ac1a-e2256090f23f" />
+<img width="1147" height="184" alt="Screenshot 2025-12-01 174510" src="https://github.com/user-attachments/assets/74a39330-73d7-4ddf-85d6-cade874b6f4f" />
+
 # snowo.io
 
 ## What is this:
