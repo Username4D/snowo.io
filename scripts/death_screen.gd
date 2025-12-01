@@ -13,7 +13,7 @@ func pop_up():
 	$borders.modulate.a = 1
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("reload") and $borders.modulate.a == 1 and self.visible:
+	if Input.is_action_just_pressed("reload") and $borders.modulate.a == 1 and self.visible and self.get_parent().is_multiplayer_authority():
 		self.visible = false
 		self.get_parent().respawn.rpc()
 		self.get_parent().respawn()

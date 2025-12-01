@@ -9,11 +9,12 @@ func _physics_process(delta: float) -> void:
 	
 	for i in get_overlapping_bodies():
 		if i.is_in_group("player"):
-			match i.team:
-				"red":
-					red_entries += 1
-				"blue":
-					blue_entries += 1
+			if i.active == true:
+				match i.team:
+					"red":
+						red_entries += 1
+					"blue":
+						blue_entries += 1
 	
 	if red_entries > blue_entries:
 		domination = move_toward(domination, 1, delta * 1)

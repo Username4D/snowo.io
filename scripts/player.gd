@@ -9,7 +9,7 @@ var ammo = 6
 var d_bullet = preload("res://scenes/snowball_bullet_decoy.tscn")
 var r_bullet = preload("res://scenes/snowball_bullet.tscn")
 
-var active = true
+@export var active = true
 var paused = false
 @export var can_reload = false
 
