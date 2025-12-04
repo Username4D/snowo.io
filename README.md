@@ -7,6 +7,7 @@ Snowo.io is a multiplayer arena fps shooter in which you have to claim all 3 fla
 
 ## How to play: 
 [here](https://github.com/Username4D/snowo.io/releases)
+[Video Demo](https://jumpshare.com/share/8jI3boEtLkFdXzH91xtu)
 
 ## Multiplayer:
 The multiplayer is P2P based, and is using [nodetunnel](https://www.nodetunnel.io/) to avoid users having to port-forward. Nodetunnel provides a relay server system. 
@@ -17,3 +18,4 @@ The Project was made using Godot 4.5.1.stable and should be edited with that ver
 ## Licenses:
 Font: [OFL](https://github.com/Username4D/snowo.io/blob/main/assets/OFL.txt)
 Nodetunnel: [Nodetunnel License](https://github.com/Username4D/snowo.io/blob/main/addons/nodetunnel/license.md)
+
